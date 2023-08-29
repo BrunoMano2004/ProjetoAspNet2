@@ -1,0 +1,56 @@
+﻿@*
+    Agora, será estabelecida a view de listagem de dados. É necessário que seja referenciado o model, 
+    pois a consistência de operação de dados precisa ser mantida. Tmabém é preciso indicar para a view
+    que os dados serão iteráveis - a partir do uso da interface IEnumerable<>
+*@
+
+@model IEnumerable<Colab>
+
+@{
+    ViewData["Title"] = "Lista de dados";
+}
+
+@* Criar estrutura html necessária *@
+
+<a asp-action="Create">Criar um registro</a>
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Salario</th>
+            <th>Departamento</th>
+            <th>Genero</th>
+            <th>Atualizar</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Colab registro in Model){
+        <tr>
+            <td>@registro.Nome</td>
+            <td>@registro.Idade</td>
+            <td>@registro.Salario</td>
+            <td>@registro.Departamento</td>
+            <td>@registro.Genero</td>
+            <td>
+                <button>
+                    <a asp-action="Update" asp-route-Identificador="@registro.Nome">
+                        Atualizar
+                    </a>
+                </button>
+            </td>
+            <td>
+                <form asp-action="Delete" asp-route-Identificador="@registro.Nome" method="post">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        }
+        
+
+    </tbody>
+</table>

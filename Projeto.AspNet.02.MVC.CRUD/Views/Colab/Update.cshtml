@@ -1,0 +1,60 @@
+﻿@*
+    Estabelecer a comunicação entre a view e o model
+*@
+
+@model Colab
+
+@{
+    @* Definir título da view *@
+    ViewData["Title"] = "Atualizar Registor";
+}
+
+@* Definir a estrutura html necessária *@
+
+<a asp-action="Index">Listar registros</a>
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <p>
+        <label asp-for="Nome">Nome</label>
+        <input type="text" asp-for="Nome"/>
+        <span asp-validation-for="Nome"></span>
+    </p>
+
+    <p>
+        <label asp-for="Idade">Idade</label>
+        <input type="number" asp-for="Idade"/>
+        <span asp-validation-for="Idade"></span>
+    </p>
+
+    <p>
+        <label asp-for="Salario">Salario</label>
+        <input type="text" asp-for="Salario"/>
+        <span asp-validation-for="Salario"></span>
+    </p>
+
+    <p>
+        <label asp-for="Departamento">Departamento</label>
+        <select asp-for="Departamento">
+            <option value="Dev">Dev</option>
+            <option value="RH">RH</option>
+            <option value="Financeiro">Financeiro</option>
+        </select>
+    </p>
+
+    <p>
+        <label asp-for="Genero">Genero</label>
+        <input type="radio" asp-for="Genero" value="M"/>
+        Masculino
+        <input type="radio" asp-for="Genero" value="F"/>
+        Feminino
+        <input type="radio" asp-for="Genero" value="O"/>
+        Outro
+        <span asp-validation-for="Genero"></span>
+    </p>
+
+    <p>
+        <button type="submit">Atualizar</button>
+    </p>
+</form>

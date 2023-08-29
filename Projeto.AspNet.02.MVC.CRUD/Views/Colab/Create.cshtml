@@ -1,0 +1,68 @@
+﻿@*
+    Esta view se "Comunicará" coma a action Create() - estabelecida no ColabController()
+*@
+
+@* fazer referência - a partir da view - ao model *@
+
+@model Colab
+
+@* Definir nome da view *@
+
+@{
+    ViewData["Title"] = "Criar Registro";
+}
+
+@* Abaixo serão impementadas algumas instruções importantes:
+- Definir uma estrutura html para a criação de um formulário;
+- "Linkar" as actions Index e create.
+*@
+<div id="container">
+<a asp-action="Index">Listar Registro</a>
+
+<h2>@ViewData["Title"]</h2>
+
+<form id="forms" method="post">
+    <p>
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome"/>
+        <span asp-validation-for="Nome"></span>
+    </p>
+
+    <p>
+        <label asp-for="Idade">Idade</label>
+        <input asp-for="Idade"/>
+        <span asp-validation-for="Idade"></span>
+    </p>
+
+    <p>
+        <label asp-for="Salario">Salario</label>
+        <input asp-for="Salario"/>
+        <span asp-validation-for="Salario"></span>
+    </p>
+
+    <p>
+        <label asp-for="Departamento">Departamento</label>
+        <select asp-for="Departamento">
+            <option value="Dev">Dev</option>
+            <option value="RH">RH</option>
+            <option value="Financeiro">Financeiro</option>
+        </select>
+    </p>
+
+    <p>
+        <label asp-for="Genero">Genero</label>
+        <input type="radio" asp-for="Genero" value="F"/>
+        Feminino
+        <input type="radio" asp-for="Genero" value="M"/>
+        Masculino
+        <input type="radio" asp-for="Genero" value="O"/>
+        Outros
+        <span asp-validation-for="Genero"></span>
+    </p>
+
+    <p>
+        <button id="cadastrar" type="submit">Cadastrar</button>
+    </p>
+
+</form>
+</div>
